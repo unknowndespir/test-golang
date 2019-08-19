@@ -53,6 +53,7 @@ jobs: # 1回の実行の基本作業単位
           CONTACTS_DB_MIGRATIONS: /go/src/github.com/CircleCI-Public/circleci-demo-go/db/migrations
         # テスト結果を $TEST_RESULTS ディレクトリに保存します
         command: |
+          # trap "go-junit-report <${TEST_RESULTS}/go-test.out > ${TEST_RESULTS}/go-test-report.xml" EXIT
           make test | tee ${TEST_RESULTS}/go-test.out
 
     - run: make # プロジェクトの依存関係をプルしてビルドします
